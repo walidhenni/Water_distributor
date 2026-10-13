@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>حصيلة مبادرة موزع المياه</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 40'%3E%3Cpath d='M15 2C15 2 3 17 3 26a12 12 0 0 0 24 0C27 17 15 2 15 2Z' fill='%234F9BE0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B3A8C;--blue-ink:#1B3A8C;--gold:#D4B062;--gold-ink:#7A5A12;--bg:#F4F7FC;--card:#FFFFFF;--ink:#1E2A44;--muted:#4A5878;--line:#D5DEEF;--soft:#EAF1FB;--water:#4F9BE0;--water2:#9CC9F5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue-ink:#AFC6FF;--gold-ink:#E6C77F;--bg:#0D1530;--card:#16214A;--ink:#EEF2FB;--muted:#B4C0DD;--line:#2B3B70;--soft:#1C2A5A;color-scheme:dark}}
+:root[data-theme="dark"]{--blue-ink:#AFC6FF;--gold-ink:#E6C77F;--bg:#0D1530;--card:#16214A;--ink:#EEF2FB;--muted:#B4C0DD;--line:#2B3B70;--soft:#1C2A5A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal','Noto Sans Arabic','Segoe UI',Tahoma,sans-serif;line-height:1.5}
+.hero{background:var(--blue);color:#fff;text-align:center;padding:30px 20px 64px}
+.kicker{color:var(--gold);font-weight:700;font-size:15px}
+.hero h1{font-family:'Aref Ruqaa','Amiri',serif;font-size:clamp(30px,8vw,46px);margin:4px 0;line-height:1.35;font-weight:700}
+.hero p{margin:0;color:#DCE6F7;font-size:15px}
+.wrap{max-width:560px;margin:-40px auto 0;padding:0 16px 36px;display:flex;flex-direction:column;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
+.gauge{display:flex;align-items:center;gap:18px}
+.glass{width:140px;flex:none;color:var(--blue-ink)}
+.glass svg{width:100%;height:auto;display:block}
+.gauge-text{flex:1;min-width:0}
+.pct{font-size:56px;font-weight:900;color:var(--blue-ink);line-height:1}
+.pct small{font-size:26px}
+.gauge-text .of{color:var(--muted);font-size:15px;margin-top:6px}
+.status{margin-top:10px;font-weight:700;color:var(--gold-ink);font-size:16px}
+.bar{height:10px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:12px}
+.bar span{display:block;height:100%;background:var(--gold);border-radius:99px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 6px;text-align:center}
+.stat .v{font-size:21px;font-weight:900;color:var(--blue-ink);line-height:1.2;white-space:nowrap}
+.stat .v small{font-size:13px;font-weight:700}
+.stat .l{font-size:13px;color:var(--muted);margin-top:4px}
+.drops-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.drops-head b{font-size:18px;color:var(--blue-ink)}
+.drops-head span{font-size:14px;color:var(--muted)}
+.drops{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.drops svg{width:100%;height:auto;display:block;color:var(--blue-ink)}
+.extra{margin-top:10px;font-size:14px;color:var(--muted);text-align:center}
+.foot{text-align:center;color:var(--muted);font-size:14px}
+.foot b{color:var(--ink)}
+.thanks{font-family:'Aref Ruqaa','Amiri',serif;font-size:28px;color:var(--blue-ink);text-align:center;margin:4px 0 0}
+.admin{border:2px dashed var(--gold)}
+.admin h2{margin:0 0 4px;font-size:18px;color:var(--blue-ink)}
+.admin .hint{margin:0 0 14px;font-size:13px;color:var(--muted)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field label{display:block;font-size:14px;font-weight:700;margin-bottom:4px}
+.field input{width:100%;font:inherit;font-size:18px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:48px}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:12px;min-height:48px;padding:10px 16px;cursor:pointer}
+.btn.primary{background:var(--blue);color:#fff;width:100%;margin-top:12px}
+.btn.ghost{background:transparent;color:var(--blue-ink);border:1px solid var(--line);width:100%;margin-top:8px}
+.btn:disabled{opacity:.55;cursor:default}
+.hist{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:220px;overflow:auto}
+.hist li{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:8px 10px;background:var(--soft);border-radius:10px}
+.msg{margin-top:8px;font-size:14px;color:var(--gold-ink);min-height:1em}
+.wave{animation:wave 3.2s ease-in-out infinite alternate}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-50px)}}
+@media (prefers-reduced-motion:reduce){.wave{animation:none}}
+@media (max-width:360px){.gauge{flex-direction:column;text-align:center}.stat .v{font-size:18px}}
+
+.err{background:var(--card);border:2px solid #C2410C;border-radius:16px;padding:16px;color:var(--ink);text-align:center}
+</style></head><body><main id="root"></main>
+<script>
+(function(){
+var DROP='M15 2C15 2 3 17 3 26a12 12 0 0 0 24 0C27 17 15 2 15 2Z';
+function fmt(n){return Number(n).toLocaleString('en-US');}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function dateLabel(d){if(!d)return'';try{return new Date(d+'T12:00:00').toLocaleDateString('ar-DZ',{day:'numeric',month:'long',year:'numeric'});}catch(e){return d;}}
+function glass(pct){
+  var y=22+(1-pct/100)*226;
+  return '<svg viewBox="0 0 200 260" role="img" aria-label="نسبة الامتلاء '+pct+'%"><defs><clipPath id="gc"><path d="M32 22L52 238Q54 250 66 250H134Q146 250 148 238L168 22Z"/></clipPath></defs><g clip-path="url(#gc)">'+
+  (pct>0?'<g class="wave"><path d="M-10 '+y+'q25 -9 50 0t50 0t50 0t50 0t50 0V270H-10Z" fill="var(--water)"/></g><rect x="0" y="'+(y+10)+'" width="200" height="270" fill="var(--water2)" opacity=".35"/>':'')+
+  '</g><path d="M32 22L52 238Q54 250 66 250H134Q146 250 148 238L168 22Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M24 22H176" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M60 50L72 200" stroke="#fff" stroke-opacity=".45" stroke-width="6" stroke-linecap="round"/></svg>';
+}
+function hero(){return '<header class="hero"><div class="kicker">مبادرة طيبة لإسعاد قاعة الأساتذة</div><h1>قطرةٌ منك.. ارتواءٌ للجميع</h1><p>الحصيلة المباشرة لجمع ثمن موزّع المياه</p></header>';}
+function render(s){
+  var amt=0,ppl=0,last=null;
+  (s.entries||[]).forEach(function(e){amt+=Number(e.amount)||0;ppl+=Number(e.people)||0;if(e.date&&(!last||e.date>last))last=e.date;});
+  var target=Number(s.target)||20000, sug=Number(s.suggested)||500, goal=Number(s.goalPeople)||40;
+  var rem=Math.max(0,target-amt), pct=Math.min(100,Math.round(amt/target*100));
+  var status=amt>=target?'اكتمل المبلغ! شكراً لكل من ساهم':(amt===0?'كن أول قطرة في هذه المبادرة':'ينقصنا '+fmt(rem)+' دج، أي نحو '+Math.ceil(rem/sug)+' مساهمة');
+  var drops='';for(var i=0;i<goal;i++){drops+='<svg viewBox="0 0 30 40" aria-hidden="true"><path d="'+DROP+'" fill="'+(i<ppl?'var(--water)':'none')+'" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>';}
+  document.getElementById('root').innerHTML=hero()+'<div class="wrap">'+
+  '<section class="card"><div class="gauge"><div class="glass">'+glass(pct)+'</div><div class="gauge-text"><div class="pct">'+pct+'<small>%</small></div><div class="of">'+fmt(amt)+' دج من أصل '+fmt(target)+' دج</div><div class="bar"><span style="width:'+pct+'%"></span></div><div class="status">'+status+'</div></div></div></section>'+
+  '<section class="stats" aria-label="الأرقام"><div class="stat"><div class="v">'+ppl+'</div><div class="l">مساهماً</div></div><div class="stat"><div class="v">'+fmt(amt)+' <small>دج</small></div><div class="l">المبلغ المجموع</div></div><div class="stat"><div class="v">'+fmt(rem)+' <small>دج</small></div><div class="l">المبلغ الباقي</div></div></section>'+
+  '<section class="card"><div class="drops-head"><b>عدّاد القطرات</b><span>'+Math.min(ppl,goal)+' من '+goal+'</span></div><div class="drops">'+drops+'</div>'+(ppl>goal?'<div class="extra">و'+(ppl-goal)+' قطرات إضافية فوق الهدف</div>':'')+'</section>'+
+  '<div class="foot">'+(last?'آخر تحديث: <b>'+esc(dateLabel(last))+'</b><br>':'')+'للمساهمة: <b>الأستاذ حني</b>، المكلّف بجمع المساهمات</div><p class="thanks">شكراً لروحكم المبادرة</p></div>';
+}
+fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(render).catch(function(){
+  document.getElementById('root').innerHTML=hero()+'<div class="wrap"><div class="err">تعذّرت قراءة البيانات. إن كنت المسؤول، تأكد من صحة ملف data.json (الفواصل والأقواس).</div></div>';
+});
+})();
+</script></body></html>
