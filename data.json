@@ -3,7 +3,8 @@
   "suggested": 500,
   "goalPeople": 40,
   "entries": [
-    {"date": "2026-10-13", "amount": 500, "people": 1}
+    {"date": "2026-10-13", "amount": 500, "people": 1},
+    {"date": "2026-10-13", "amount": 2000, "people": 4}
   
   ]
 }
